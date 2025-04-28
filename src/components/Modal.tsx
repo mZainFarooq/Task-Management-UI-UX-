@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import Button from "./Button";
+import ColorPicker from "./ColorPicker";
+import { Colors } from "../Utils";
 
 type ModalProps = {
   isListModalOpen?: boolean;
@@ -14,6 +16,8 @@ const Modal: React.FC<ModalProps> = ({
   setIsTagModalOpen,
   setIsListModalOpen,
 }) => {
+  const [selectedColor, setSelectedColor] = useState(Colors?.[0]);
+  console.log(selectedColor);
   return (
     <div
       className="fixed  inset-0 z-50 grid place-content-center bg-black/50 p-4"
@@ -21,7 +25,7 @@ const Modal: React.FC<ModalProps> = ({
       aria-modal="true"
       aria-labelledby="modalTitle"
     >
-      <div className="w-full  max-w-md rounded-lg bg-white p-6 shadow-lg">
+      <div className="w-72   sm:min-w-md  rounded-lg bg-white p-6 shadow-lg">
         <div className="flex items-start justify-between">
           <h2
             id="modalTitle"
@@ -47,35 +51,25 @@ const Modal: React.FC<ModalProps> = ({
         </div>
 
         {isListModalOpen ? (
-          <div className="mt-4 ">
-            <input
-              type="text"
-              placeholder="Add New List"
-              className="peer mt-0.5 px-2 w-full placeholder:text-black rounded border border-black h-8 sm:text-sm"
-            />
+          <div className="mt-4 p-2  ">
+            <div className="flex items-center  border-gray-600 border px-2 rounded h-8">
+              <div
+                className="w-4 h-4 rounded-sm mt-0.5"
+                style={{ backgroundColor: selectedColor }}
+              ></div>
+              <div className="w-full h-full">
+                <input
+                  type="text"
+                  placeholder="Add New List"
+                  className=" px-2  w-full placeholder:text-gray-600 h-full  outline-0 text-sm"
+                />
+              </div>
+            </div>
             <div className="mt-2">
-              <label htmlFor="colorSelect" className="">
-                Choose a color:
-              </label>
-              <select
-                className="w-full h-8 mt-0.5  border border-black"
-                id="colorSelect"
-                name="color"
-              >
-                <option value="">Select a color</option>
-                <option value="red" className="">
-                  Green
-                </option>
-                <option value="red" className="">
-                  Orange
-                </option>
-                <option value="red" className="">
-                  Blue
-                </option>
-                <option value="red" className="">
-                  Purple
-                </option>
-              </select>
+              <ColorPicker
+                selectedColor={selectedColor}
+                setSelectedColor={setSelectedColor}
+              />
             </div>
           </div>
         ) : (
@@ -83,8 +77,15 @@ const Modal: React.FC<ModalProps> = ({
             <input
               type="text"
               placeholder="Add New Tag"
+              style={{ backgroundColor: selectedColor }}
               className="peer mt-0.5 px-2 w-full placeholder:text-black rounded border border-black h-8 sm:text-sm"
             />
+            <div className="mt-2">
+              <ColorPicker
+                selectedColor={selectedColor}
+                setSelectedColor={setSelectedColor}
+              />
+            </div>
           </div>
         )}
         <footer className="mt-6 flex justify-end gap-2">

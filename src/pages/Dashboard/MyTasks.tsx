@@ -1,10 +1,10 @@
 import { IoMdAdd } from "react-icons/io";
 import Button from "../../components/Button";
 import { FaAngleRight } from "react-icons/fa6";
-import { useState } from "react";
 import TodoFormModal from "../../components/TodoFormModal";
+import { useState } from "react";
 
-const UpcomingTasks = () => {
+const MyTasks = () => {
   const [isTodoFormModal, setIsTodoFormModal] = useState(false);
   const handleClick = () => {
     setIsTodoFormModal(true);
@@ -16,7 +16,7 @@ const UpcomingTasks = () => {
       )}
       <div className="flex justify-between  items-center flex-col md:flex-row">
         <div>
-          <h1 className="text-3xl font-semibold mt-4">Upcoming Tasks</h1>
+          <h1 className="text-3xl font-semibold mt-4">My Tasks</h1>
           <h3 className="text-lg mt-1 ml-1 text-gray-700">
             Today, Wednesday 6 July 2025
           </h3>
@@ -70,4 +70,4 @@ const UpcomingTasks = () => {
   );
 };
 
-export default UpcomingTasks;
+export default MyTasks;

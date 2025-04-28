@@ -6,8 +6,7 @@ export const UnAuthenticatedPages = {
 
 export const AuthenticatedPages = {
   dashboard: "home",
-  TodayTasks: "today-tasks",
-  UpcomingTasks: "upcoming-tasks",
+  MyTasks: "my-tasks",
   Profile: "profile",
   Notifications: "notifications",
 };

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { CgMenuLeft } from "react-icons/cg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthenticatedPages } from "../router/routes";
+import { handleLogout } from "../firebase/authService";
 
 type NavbarProps = {
   isSideMenu: boolean;
@@ -9,6 +10,7 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ isSideMenu, setIsSideMenu }) => {
+  const navigate = useNavigate();
   const [isDropDown, setIsDropDown] = useState(false);
 
   return (
@@ -86,6 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ isSideMenu, setIsSideMenu }) => {
                     <form method="POST" action="#">
                       <button
                         onClick={() => {
+                          handleLogout(navigate);
                           setIsDropDown(false);
                         }}
                         type="button"
