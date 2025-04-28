@@ -7,7 +7,6 @@ import { RxEyeOpen } from "react-icons/rx";
 import { VscEyeClosed } from "react-icons/vsc";
 import Loader from "../components/Loader";
 import { SignUpWithEmailAndPassword } from "../firebase/authService";
-import { useDispatch } from "react-redux";
 
 type FormValues = {
   name: string;
@@ -18,7 +17,6 @@ type FormValues = {
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -36,7 +34,6 @@ const SignUp = () => {
       password: data.password,
       name: data.name,
       username: data.username,
-      dispatch,
       setIsLoading,
       navigate,
     });

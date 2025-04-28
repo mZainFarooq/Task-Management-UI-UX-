@@ -22,7 +22,6 @@ export const SignUpWithEmailAndPassword = async ({
   name,
   username,
   setIsLoading,
-  dispatch,
   navigate,
 }: UserParams) => {
   if (setIsLoading) setIsLoading(true);
