@@ -3,6 +3,9 @@ import { CgMenuLeft } from "react-icons/cg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthenticatedPages } from "../router/routes";
 import { handleLogout } from "../firebase/authService";
+import { RootState } from "../store/store";
+import { useSelector } from "react-redux";
+import Avatar from "./Avatar";
 
 type NavbarProps = {
   isSideMenu: boolean;
@@ -10,6 +13,7 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ isSideMenu, setIsSideMenu }) => {
+  const user = useSelector((state: RootState) => state.auth.user);
   const navigate = useNavigate();
   const [isDropDown, setIsDropDown] = useState(false);
 
@@ -40,14 +44,8 @@ const Navbar: React.FC<NavbarProps> = ({ isSideMenu, setIsSideMenu }) => {
                 className="overflow-hidden rounded-full border border-gray-300 shadow-inner"
               >
                 <span className="sr-only">Toggle dashboard menu</span>
-
-                <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt=""
-                  className="size-10 object-cover cursor-pointer hover:opacity-85"
-                />
+                <Avatar user={user?.profilePic} userName={user?.name} />
               </button>
-
               {isDropDown && (
                 <div
                   className="absolute  end-8 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-2xl"

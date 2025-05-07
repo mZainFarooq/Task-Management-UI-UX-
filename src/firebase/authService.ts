@@ -39,6 +39,7 @@ export const SignUpWithEmailAndPassword = async ({
       email: user.email,
       name: name,
       username: username,
+      profilePic: "",
       createdAt: new Date(),
     });
 

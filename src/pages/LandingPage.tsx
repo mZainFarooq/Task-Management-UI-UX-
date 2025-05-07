@@ -20,7 +20,7 @@ const LandingPage = () => {
             succeed — effortlessly.
           </p>
           <Link to="/dashboard/home">
-            <button className="mt-8 bg-gray-700 text-white px-6 py-2 rounded-full text-sm hover:bg-gray-400 transition font-normal">
+            <button className="mt-8 bg-gray-700 text-white px-6 py-2 rounded-full text-sm hover:bg-gray-400 transition font-normal cursor-pointer">
               Get Started
             </button>
           </Link>

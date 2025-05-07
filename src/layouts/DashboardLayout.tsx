@@ -4,7 +4,9 @@ import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
-  const [isSideMenu, setIsSideMenu] = useState(true);
+  const [isSideMenu, setIsSideMenu] = useState(() => window.innerWidth > 768);
+  console.log(isSideMenu);
+
   return (
     <div className="flex">
       <div
@@ -17,7 +19,7 @@ const DashboardLayout = () => {
       <div className="flex-1  w-[70%] lg:w-[75%] ">
         <Navbar isSideMenu={isSideMenu} setIsSideMenu={setIsSideMenu} />
 
-        <main className=" bg-gray-200 h-screen pt-18 pb-4 overflow-y-auto scroll-smooth scrollbar-hidden px-4">
+        <main className=" bg-gray-200  h-screen pt-18 pb-4 overflow-y-auto scroll-smooth scrollbar-hidden">
           <Outlet />
         </main>
       </div>
